@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
             $table->string('title', 100);
             $table->text('content');
             $table->string('address', 255);
@@ -25,8 +24,7 @@ return new class extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-        });
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');        });
     }
 
     /**

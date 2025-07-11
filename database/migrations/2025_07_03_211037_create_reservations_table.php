@@ -12,17 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('reservations', function (Blueprint $table) {
-$table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id'); 
-            $table->unsignedBigInteger('post_id');
+            $table->id();;
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); 
+            $table->foreignId('post_id')->constrained()->onDelete('cascade');
             $table->tinyInteger('num_guests');
             $table->date('start_date');
             $table->date('end_date');
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

@@ -5,44 +5,48 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Post;
+
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
+    /**新規ログイン時入力情報 */
     protected $fillable = [
         'name',
         'email',
         'password',
+        'introduction'
     ];
-
     /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
+     * ユーザーが投稿した宿泊施設
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
+     public function posts()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->hasMany(Post::class);
+    }
+
+    /**
+     * ユーザーが行った予約
+     */
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
+    /**
+     * ユーザーが行った通報
+     */
+     public function reports()
+    {
+        return $this->hasMany(Report::class);
+    }
+    /**
+     * ユーザーが登録したブックマーク
+     */
+    public function bookmarks()
+    {
+        return $this->hasMany(Bookmark::class);
     }
 }

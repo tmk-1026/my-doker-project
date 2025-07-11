@@ -16,7 +16,7 @@ class ReportsTableSeeder extends Seeder
     {
         DB::table('reports')->insert([
             [
-                'user_id' => 1, // 一般ユーザー
+                'user_id' => 1,
                 'post_id' => 1,
                 'reason' => '不適切な内容が含まれているため。',
             ],
