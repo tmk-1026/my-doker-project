@@ -12,16 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('reports', function (Blueprint $table) {
-           $table->bigIncrements('id'); 
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('post_id');
-            $table->text('reason');
-            $table->timestamp('created_at')->useCurrent();
+        $table->bigIncrements('id');
+        $table->unsignedBigInteger('user_id');
+        $table->unsignedBigInteger('post_id');
+        $table->text('reason');
+        $table->timestamp('created_at')->useCurrent();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
-        });
-    }
+        $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+    });
+}
 
     /**
      * Reverse the migrations.

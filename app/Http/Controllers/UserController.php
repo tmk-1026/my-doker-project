@@ -46,4 +46,16 @@ class UserController extends Controller
         return view('users.profile', compact('user'));
     }
 
+    public function destroy()
+    {
+        $user = Auth::user();
+
+        if ($user->role !== 0) {abort(403);}
+
+        $user->delete();
+
+        Auth::logout();
+
+        return redirect('/')->with('success', '退会が完了しました。');
+    }
 }
