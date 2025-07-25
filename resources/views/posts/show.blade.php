@@ -12,6 +12,10 @@
 
     {{-- 戻るボタン --}}
     <a href="{{ route('posts.index') }}" class="btn btn-secondary">戻る</a>
+
+    {{-- 予約ボタン --}}
+    <a href="{{ route('reservations.create', $post->id) }}" class="btn btn-success mt-3">予約</a>
+
 </div>
 
 {{-- 通報ボタン（右下固定） --}}

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 namespace App\Http;
 
@@ -52,8 +52,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
-        'isadmin' => \App\Http\Middleware\IsAdmin::class,
-        'isOwner' => \App\Http\Middleware\IsOwner::class,
-        'isGeneralUser' => \App\Http\Middleware\IsGeneralUser::class,
+        // 管理者用ミドルウェア
+        'is_admin' => \App\Http\Middleware\IsAdmin::class,
     ];
 }

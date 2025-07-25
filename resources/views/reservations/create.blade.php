@@ -9,12 +9,8 @@
 
         <div class="mb-3">
             <label for="post_id" class="form-label">宿泊施設</label>
-            <select name="post_id" id="post_id" class="form-select" required>
-                <option value="">選択してください</option>
-                @foreach($posts as $post)
-                    <option value="{{ $post->id }}">{{ $post->title }}</option>
-                @endforeach
-            </select>
+            <p>{{ $post->title }}</p>
+            <input type="hidden" name="post_id" value="{{ $post->id }}">
         </div>
 
         <div class="mb-3">

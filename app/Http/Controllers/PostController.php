@@ -64,7 +64,7 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'address' => 'required|max:255',
             'body' => 'required',
-            'price' => 'required|numeric',
+            'price' => 'required|numeric|min:0',
             'max_guest' => 'required|integer|min:1',
             'available_from' => 'required|date',
             'available_to' => 'required|date|after_or_equal:available_from',

@@ -16,10 +16,15 @@ class ReservationController extends Controller
         return view('reservations.index', compact('reservations'));
     }
 
-    public function create()
+    //public function create()
+    //{
+        //$posts = \App\Models\Post::all();
+        //return view('reservations.create', compact('posts'));
+    //}
+
+    public function create(Post $post)
     {
-        $posts = \App\Models\Post::all();
-        return view('reservations.create', compact('posts'));
+        return view('reservations.create', compact('post'));
     }
 
     public function store(Request $request)

@@ -43,7 +43,7 @@
             <label for="price" class="form-label">料金(1泊あたり)</label>
             <input type="number" name="price" id="price"
                    value="{{ old('price') }}"
-                   class="form-control" placeholder="料金を入力">
+                   class="form-control"  min="0" placeholder="料金を入力">
         </div>
 
         <div class="mb-3">

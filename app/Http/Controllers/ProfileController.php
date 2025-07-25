@@ -8,17 +8,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
     /**
      * Display the user's profile form.
      */
-    public function edit(Request $request): View
+
+    public function profile(User $user)
     {
-        return view('profile.edit', [
-            'user' => $request->user(),
-        ]);
+        $posts = \App\Models\Post::latest()->get();
+        return view('profile.edit', compact('posts'));
+    }
+    
+    public function edit()
+    {
+        $posts = \App\Models\Post::latest()->get();
+        return view('profile.edit', compact('posts'));
     }
 
     /**
@@ -57,4 +64,7 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    
+
 }
